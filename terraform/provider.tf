@@ -1,3 +1,12 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "random_string" "suffix" {
+  length  = 5
+  special = false
+}
+
 terraform {
 
   required_providers {
@@ -16,14 +25,14 @@ terraform {
     }
   }
 
-backend "remote" {
-		hostname = "app.terraform.io"
-		organization = "CloudQuickLabs"
+  # backend "remote" {
+  # 		hostname = "app.terraform.io"
+  # 		organization = "CloudQuickLabs"
 
-		workspaces {
-			name = "AWSEKS"
-		}
-	}
+  # 		workspaces {
+  # 			name = "AWSEKS"
+  # 		}
+  # 	}
 }
 
 /*
@@ -40,12 +49,3 @@ provider "kubernetes" {
 
 }
 */
-
-provider "aws" {
-  region = "us-west-2"
-}
-
-resource "random_string" "suffix" {
-  length  = 5
-  special = false
-}
